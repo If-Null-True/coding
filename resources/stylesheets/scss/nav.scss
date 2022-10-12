@@ -1,0 +1,81 @@
+@use 'globals';
+@use 'flex';
+@use 'vendored';
+@use 'sass:math';
+
+nav {
+  background: globals.$clr-nav;
+  width: globals.$nav-width;
+  min-height: 100vh;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  @include flex.centre();
+
+  ul {
+    width: 100%;
+    height: 100vh;
+    max-height: 500px;
+
+    list-style: none;
+
+    @include flex.space-around();
+  }
+}
+
+nav li {
+  width: globals.$nav-width * 0.9;
+  height: globals.$nav-width * 0.9;
+  @include flex.centre();
+
+  > a, > span {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-decoration: none;
+    @include vendored.bdrs(10px);
+    @include vendored.trs();
+    @include flex.centre();
+
+    &:hover,
+    &:focus {
+      background: rgba(globals.$clr-grey, 0.1);
+      // color: globals.$clr-hover;
+
+      // .material-symbols-outlined {
+      //   color: globals.$clr-hover;
+      // }
+    }
+
+    .material-symbols-outlined {
+      font-size: 48px;
+    }
+
+    img {
+      width: 48px;
+    }
+  }
+
+  &.current-page {
+    span {
+      color: globals.$clr-hover;
+    }
+
+    > a:hover,
+    > span:hover {
+      background: none;
+    }
+  }
+}
+
+
+#skip-nav-aria {
+  background: globals.$clr-nav;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}

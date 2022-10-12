@@ -1,0 +1,76 @@
+nav {
+  background: #1e2835;
+  width: 100px;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+nav ul {
+  width: 100%;
+  height: 100vh;
+  max-height: 500px;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+nav li {
+  width: 90px;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+nav li > a, nav li > span {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  text-decoration: none;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-transition: 50ms;
+  -moz-transition: 50ms;
+  -ms-transition: 50ms;
+  -o-transition: 50ms;
+  transition: 50ms;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+nav li > a:hover, nav li > a:focus, nav li > span:hover, nav li > span:focus {
+  background: rgba(202, 220, 231, 0.1);
+}
+nav li > a .material-symbols-outlined, nav li > span .material-symbols-outlined {
+  font-size: 48px;
+}
+nav li > a img, nav li > span img {
+  width: 48px;
+}
+nav li.current-page span {
+  color: #e95e0c;
+}
+nav li.current-page > a:hover,
+nav li.current-page > span:hover {
+  background: none;
+}
+
+#skip-nav-aria {
+  background: #1e2835;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/*# sourceMappingURL=nav.css.map */

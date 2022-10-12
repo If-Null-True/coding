@@ -1,0 +1,417 @@
+@use 'globals';
+@use 'vendored';
+@use 'flex';
+
+/********************
+        RESET
+********************/
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
+  font: {
+    family: globals.$font-main;
+    size: 1rem;
+    weight: 400;
+  };
+  color: white;
+}
+
+
+
+
+/********************
+      SECTIONS
+********************/
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: globals.$clr-bg;
+  padding-left: globals.$nav-width;
+}
+
+header {
+  padding: 2em 5em;
+
+  h1 {
+    margin-top: 0;
+  }
+}
+
+section {
+  background: globals.$clr-paper;
+  padding: 100px;
+}
+
+.flex-row {
+  @include flex.space-around(row);
+}
+
+.flex-col {
+  @include flex.space-around();
+}
+
+
+
+
+/********************
+        TEXT
+********************/
+// HEADINGS
+h1 {
+  margin: 0.5em auto;
+  font-size: 2.75rem;
+  text-align: center;
+
+  span {
+    font-size: 2.75rem;
+  }
+}
+
+h2 {
+  margin: 0.5em 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+h3 {
+  margin: 0.5em 0;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+h4 {
+  margin: 1em 0 0.5em;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.subtitle {
+  margin-top: -0.5em;
+  display: block;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+
+// GENERAL
+p {
+  margin: 0.5em 0 1.5em;
+}
+
+a {
+  @extend p;
+  color: globals.$clr-hover;
+
+  &:focus {
+    outline: 2px solid globals.$clr-hover;
+  }
+}
+
+
+// MONOSPACE
+code {
+  background: globals.$clr-paper;
+  border-radius: 15px;
+  padding: 15px;
+  display: inline-block;
+
+  &, * {
+    font: {
+      family: globals.$font-code !important;
+      weight: 400;
+    };
+  }
+}
+
+pre {
+  @extend code;
+  margin: 1.5rem 0;
+  display: block;
+}
+
+
+// BRANDED
+.branded {
+  &, span {
+    font-family: globals.$font-brand;
+    font-size: 0.9em;
+    color: globals.$clr-orange-2;
+  }
+
+  span {
+    font-size: 1.2em;
+  }
+
+  &::before {
+    content: " ";
+    background-image: url('../../images/coding128x128.png');
+    background-size: contain;
+    margin: 0 0.3em 0 0.5em;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+  }
+
+  // &::after {
+  //   content: "INT";
+  //   font-family: globals.$font-brand;
+  //   font-size: 0.85em;
+  //   color: lighten(globals.$clr-hover, 2.5%);
+  // }
+}
+
+
+// SELECTION
+::-moz-selection {
+  background: rgba(globals.$clr-orange-1, 0.75);
+  color: white;
+}
+
+::selection {
+  background: rgba(globals.$clr-orange-1, 0.75);
+  color: white;
+}
+
+
+// TYPED
+.typed {
+  span {
+    overflow: hidden;
+    width: 10.05em;
+    display: inline-block;
+    position: relative;
+  
+    font-family: globals.$font-pseudo;
+    font-weight: 300;
+    text-overflow: clip;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  
+    animation: wait globals.$delay step-end,
+               typing 1.25s steps(14, end) globals.$delay;
+
+    @include vendored.trs(100ms);
+
+    &::before {
+      content: '> ';
+      // background: red;
+      // position: absolute;
+      // left: -1.25em;
+      font-size: 1em;
+      font-weight: 500;
+    }
+  }
+
+  &::after {
+    content: '_';
+    position: absolute;
+    font-size: 1em;
+    font-weight: 500;
+    animation: blink 1.75s infinite;
+  }
+}
+
+@keyframes delay {
+  from, to {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}
+
+@keyframes wait {
+  from, to { width: 1em; }
+}
+
+@keyframes typing {
+  from { width: 1em; }
+  to { width: 10.75em; }
+}
+
+@keyframes blink {
+  25% { opacity: 0; }
+  40% { opacity: 1; }
+  60% { opacity: 1; }
+  75% { opacity: 0; }
+}
+
+
+
+
+/********************
+       TABLES
+********************/
+table {
+  border-spacing: 0px;
+
+  th {
+    background: globals.$clr-orange-3;
+    padding: 10px;
+
+    font-weight: bold;
+    color: black;
+  }
+  
+  td {
+    border: 1px solid rgba(globals.$clr-grey, 0.2);
+    padding: 10px;
+  }
+}
+
+
+
+
+/********************
+      ARTICLES
+********************/
+// ARTICLE PREVIEWS
+#article-previews li {
+  & {
+    background: lighten(globals.$clr-paper, 1%);
+    box-shadow: 0 2px 15px 10px rgba(black, 0.1);
+    margin: 30px 0;
+    border-radius: 10px;
+    display: block;
+
+    @include vendored.trs(250ms);
+
+    &:hover {
+      background: rgba(globals.$clr-orange-1, 0.75);
+    }
+  }
+
+  > a {
+    margin: 0;
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .title {
+    margin: 0;
+    font-size: 2em;
+    text-align: left;
+  }
+
+  .date {
+    color: globals.$clr-grey;
+  }
+
+  .session {
+    margin-right: 0.5em;
+    border-right: 1px solid white;
+    padding-right: 1em;
+    display: inline-block;
+  }
+}
+
+
+// ARTICLE VIEWING
+.article header {
+  #date {
+    & {
+      text-align: center;
+    }
+
+    span {
+      color: globals.$clr-grey;
+    }
+
+    .session {
+      margin-bottom: 0.25em;
+      color: white;
+      display: inline-block;
+    }
+  }
+}
+
+.article hr {
+  margin: auto;
+  border-color: rgba(globals.$clr-grey, 0.1);
+  width: 80%;
+}
+
+
+// ARTICLE CONTENT
+article {
+  padding: 2em 5em;
+
+  *:first-child {
+    margin-top: 0;
+  }
+
+  * {
+    font-size: 1em;
+  }
+
+  h2 {
+    margin-top: 2em;
+    font-size: 1.725em;
+  }
+
+  h3 {
+    font-size: 1.6em;
+  }
+
+  h4 {
+    font-size: 1.475em;
+  }
+
+  h5 {
+    font-size: 1.325em;
+  }
+
+  h6 {
+    font-size: 1.2em;
+  }
+}
+
+
+
+
+/********************
+    ACCESSIBILITY
+********************/
+/* Hidden but ARIA accessible */
+// Thanks to Nomensa for this hidden-but-accessible code
+.aria-only {
+  overflow: hidden;
+  // outline: none;
+  border: none;
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+
+  &.focusable {
+    &:active, &:focus {
+      overflow: visible;
+      margin: 0;
+      width: auto;
+      height: auto;
+      position: static;
+      clip: auto;
+    }
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: initial !important;
+  }
+}

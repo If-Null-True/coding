@@ -115,8 +115,9 @@ pre {
 }
 
 .branded, .branded span {
-  font-family: "Core Sans C 65", sans-serif;
+  font-family: "Core Sans C", sans-serif;
   font-size: 0.9em;
+  font-weight: 700;
   color: #e96417;
 }
 .branded span {

@@ -140,6 +140,7 @@ pre {
   &, span {
     font-family: globals.$font-brand;
     font-size: 0.9em;
+    font-weight: 700;
     color: globals.$clr-orange-2;
   }
 
@@ -160,6 +161,7 @@ pre {
   // &::after {
   //   content: "INT";
   //   font-family: globals.$font-brand;
+  //   font-weight: 700;
   //   font-size: 0.85em;
   //   color: lighten(globals.$clr-hover, 2.5%);
   // }
